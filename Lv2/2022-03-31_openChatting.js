@@ -5,36 +5,23 @@ const record = ["Enter uid1234 Muzi", "Enter uid4567 Prodo", "Leave uid1234", "E
 function solution(record) {
   let answer = [];
   let nameObj = {};
-  let actions = [];
 
   record.forEach(ele => {
-    const info = ele.split(" ");
-    const ACTION = info[0];
-    const ID = info[1];
-    if (ACTION !== "Leave") {
-      const NAME = info[2];
-      nameObj = {
-        ...nameObj,
-        [ID]: NAME,
-      }
+    const [ACTION, ID, NAME] = ele.split(' ');
+
+    if (ACTION === "Leave") {
+      answer.push([ID, '님이 나갔습니다.']);
+      return;
     }
-    if (ACTION !== "Change") {
-      actions.push([ACTION, ID]);
-    }
-  });
-
-
-
-  actions.forEach(action => {
-    const ACTION = action[0];
-    const ID = action[1];
     if (ACTION === "Enter") {
-      answer.push(`${nameObj[ID]}님이 들어왔습니다.`);
-    } else if (ACTION === "Leave") {
-      answer.push(`${nameObj[ID]}님이 나갔습니다.`);
+      answer.push([ID, '님이 들어왔습니다.']);
     }
+
+    nameObj[ID] = NAME;
+
   });
-  return answer;
+
+  return answer.map(ele => nameObj[ele[0]] + ele[1]);
 }
 
 console.log(solution(record));
