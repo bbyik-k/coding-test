@@ -10,9 +10,3 @@ console.log(num1-num2);
 console.log(num1*num2);
 console.log(parseInt(num1/num2));
 console.log(num1%num2);
-
-// console.log(`${num1+num2}\n
-// ${num1-num2}\n
-// ${num1*num2}\n
-// ${parseInt(num1/num2)}\n
-// ${num1%num2}`);
